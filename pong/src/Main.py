@@ -1,12 +1,27 @@
-import pygame
+import pygame, sys
 from pygame.locals import *
-pygame.init()
+
 FPS = 75
 
-WINDOWWIDTH = 400
-WINDOWHEIGHT = 300
+WINDOWWIDTH = 1200
+WINDOWHEIGHT = 900
 
+def main():
+    pygame.init()
+    global DISPLAYSURF
 
-def drawArena():
-    DISPLAYSURF.fill((0,0,0))
+    FPSCLOCK = pygame.time.Clock()
+    DISPLAYSURF = pygame.display.set_mode((WINDOWWIDTH, WINDOWHEIGHT))
+    pygame.display.set_caption('Pong')
 
+    while True:
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                pygame.quit()
+                sys.exit()
+
+        pygame.display.update()
+        FPSCLOCK.tick(FPS)
+
+if __name__=='__main__':
+    main()
